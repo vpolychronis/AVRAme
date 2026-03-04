@@ -1,0 +1,9 @@
+# Αγνόησε τους φακέλους του ROS 2 build
+build/
+install/
+log/
+
+# Αγνόησε κρυφά αρχεία Python και συστήματος
+__pycache__/
+*.pyc
+.vscode/
