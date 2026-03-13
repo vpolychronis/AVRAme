@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+		'pid_controller_node = avra_control.pid_controller_node:main',
         ],
     },
 )

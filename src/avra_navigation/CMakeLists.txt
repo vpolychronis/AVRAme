@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(nav_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(avra_interfaces REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -23,5 +24,17 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+add_executable(sensor_fusion_node src/sensor_fusion_node.cpp)
+ament_target_dependencies(sensor_fusion_node rclcpp sensor_msgs)
+
+add_executable(path_planner_node src/path_planner_node.cpp)
+ament_target_dependencies(path_planner_node rclcpp sensor_msgs)
+
+install(TARGETS
+  sensor_fusion_node
+  path_planner_node
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
