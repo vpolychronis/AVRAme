@@ -24,9 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-		'camera_node = avra_perception.camera_node:main',
-		'lidar_node = avra_perception.lidar_node:main',
-		'yolo_vision_node = avra_perception.yolo_vision_node:main',
+            'camera_node = avra_perception.camera_node:main',
+            'yolo_node = avra_perception.yolo_node:main',
         ],
     },
 )

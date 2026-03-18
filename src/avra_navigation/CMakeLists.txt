@@ -26,10 +26,10 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(sensor_fusion_node src/sensor_fusion_node.cpp)
-ament_target_dependencies(sensor_fusion_node rclcpp sensor_msgs)
+ament_target_dependencies(sensor_fusion_node rclcpp sensor_msgs avra_interfaces)
 
 add_executable(path_planner_node src/path_planner_node.cpp)
-ament_target_dependencies(path_planner_node rclcpp sensor_msgs)
+ament_target_dependencies(path_planner_node rclcpp sensor_msgs avra_interfaces)
 
 install(TARGETS
   sensor_fusion_node
