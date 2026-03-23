@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "ROS 2 Humble (Docker)",
+            "includePath": [
+                "${workspaceFolder}/**",                // The source code
+                "/opt/ros/humble/include/**",           // Base ROS 2 headers
+                "${workspaceFolder}/install/**/include/**" // Headers for custom interfaces
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

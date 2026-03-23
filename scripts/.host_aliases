@@ -1,0 +1,22 @@
+# =======================================================
+# AVRA - HOST ALIASES (Dynamic Path Version)
+# =======================================================
+
+# 1. PATH DETECTION
+# This finds the folder where this file lives, then goes up one level to the root.
+export AVRA_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+# 2. NAVIGATION
+alias cwavra='cd "$AVRA_ROOT"'
+
+# 3. DOCKER OPERATIONS (Outside the container)
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias shell='docker exec -it avra_v3 bash'
+alias status='docker compose ps'
+alias prune='docker system prune -af'
+alias dcb='docker compose up -d --build'
+alias dcbcache='docker compose build --no-cache'
+
+# 4. ROS 2 CONVENIENCE (From host)
+alias dlogs='docker compose logs -f'

@@ -1,9 +1,22 @@
-# Αγνόησε τους φακέλους του ROS 2 build
+# --- ROS 2 Standard ---
 build/
 install/
 log/
+.pytest_cache/
 
-# Αγνόησε κρυφά αρχεία Python και συστήματος
+# --- Python & C++ Artifacts ---
 __pycache__/
-*.pyc
-.vscode/
+*.py[cod]
+.venv/
+*.so
+
+# --- VS Code (The "AVRA" Way) ---
+.vscode/*
+!.vscode/tasks.json
+!.vscode/c_cpp_properties.json
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# --- OS Junk ---
+.DS_Store
+.history/

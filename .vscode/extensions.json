@@ -1,0 +1,9 @@
+{
+    // this is where vscode extensions that aren't essential to the workspace are put
+    "recommendations": [
+        //"redhat.vscode-yaml",
+        //"dotjoshjohnson.xml",
+        //"eamodio.gitlens",
+        //"streetsidesoftware.code-spell-checker"
+    ]
+}

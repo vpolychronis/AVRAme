@@ -1,0 +1,17 @@
+{
+    // So that the editor actually sees the custom msgs etc we include
+    "python.analysis.extraPaths": [
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "${workspaceFolder}/install/navigation/lib/python3.10/site-packages",
+        "${workspaceFolder}/install/perception/lib/python3.10/site-packages",
+        "${workspaceFolder}/install/control/lib/python3.10/site-packages",
+        "${workspaceFolder}/install/bringup/lib/python3.10/site-packages",
+        "${workspaceFolder}/install/interfaces/lib/python3.10/site-packages"
+    ],
+    "python.autoComplete.extraPaths": [
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "${workspaceFolder}/install/interfaces/lib/python3.10/site-packages",
+        "${workspaceFolder}/install/control/lib/python3.10/site-packages"
+    ]
+}
+// Update to python3.12 for Jazzy

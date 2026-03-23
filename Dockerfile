@@ -28,7 +28,9 @@ RUN colcon mixin add default \
       https://raw.githubusercontent.com/colcon/colcon-metadata-repository/master/index.yaml && \
     colcon metadata update
 
-# additional libraries for each subteam
+# --------------------------------------------------------------------------    
+# additional libraries for each subteam 
+
 #RUN apt-get update && apt-get install -y --no-install-recommends \
     # Control
     #
@@ -50,11 +52,49 @@ RUN colcon mixin add default \
     #
     #
     #
-    #&& rm -rf /var/lib/apt/lists/*    
+    #&& rm -rf /var/lib/apt/lists/*   
+# --------------------------------------------------------------------------     
 
-# Sets the workspace automatically
+
+# create a new user so that nothing gets uploaded as root
+# argument definition 
+ARG USERNAME=ros
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+# create a user that matches Host UID/GID
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    && apt-get update \
+    && apt-get install -y sudo \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# set permissions for the workspace
+# create the folder and give ownership to this new user
+RUN mkdir -p /home/ros/avra_ws && chown -R $USERNAME:$USERNAME /home/ros/avra_ws
+
+# switch to the new user
+USER $USERNAME 
+
+# sets the workspace automatically
 WORKDIR /home/ros/avra_ws
 
-# Source ROS 2 for every new terminal session
-RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
-    echo "if [ -f /home/ros/avra_ws/install/setup.bash ]; then source /home/ros/avra_ws/install/setup.bash; fi" >> /root/.bashrc
+# source ROS 2 for every new terminal session
+RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc && \
+    echo "if [ -f /home/ros/avra_ws/install/setup.bash ]; then source /home/ros/avra_ws/install/setup.bash; fi" >> ~/.bashrc
+
+# AVRA PROJECT - CONTAINER ALIASES
+
+# create the aliases in the ros user .bashrc
+RUN echo "alias cw='cd /home/ros/avra_ws'" >> ~/.bashrc && \
+    echo "alias sb='source /home/ros/avra_ws/install/setup.bash'" >> ~/.bashrc && \
+    echo "alias build='colcon build --symlink-install && sb'" >> ~/.bashrc && \
+    echo "alias nodes='ros2 node list'" >> ~/.bashrc && \
+    echo "alias topics='ros2 topic list'" >> ~/.bashrc
+
+# add a visual indicator to the prompt 
+RUN echo "export PS1='\[\033[01;32m\][AVRA-DOCKER]\[\033[00m\] \w \$ '" >> ~/.bashrc
+
+# fixes the rosdep permissions
+RUN sudo rosdep fix-permissions && rosdep update

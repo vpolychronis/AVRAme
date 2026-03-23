@@ -1,0 +1,58 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "🏗️ AVRA: Build Container no cache (dcbcache)",
+            "type": "shell",
+            "command": "docker compose build --no-cache",
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": "build"
+        },
+        {
+            "label": "🛠️ AVRA: Build Container (dcb)",
+            "type": "shell",
+            "command": "docker compose up -d --build",
+            "presentation": {
+                "reveal": "always"
+            },
+            "group": "build"
+        },
+        {
+            "label": "🚢 AVRA: Docker Up (dcu)",
+            "type": "shell",
+            "command": "docker compose up -d",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "group": "build"
+        },
+        {
+            "label": "🛑 AVRA: Docker Down (dcd)",
+            "type": "shell",
+            "command": "docker compose down",
+            "presentation": {
+                "reveal": "always"
+            }
+        },
+        {
+            "label": "🐚 AVRA: Enter Shell (shell)",
+            "type": "shell",
+            "command": "docker exec -it avra_v3 bash",
+            "problemMatcher": []
+        },
+        {
+            "label": "🔨 AVRA: Open & Build New Terminal (Inside Docker)",
+            "type": "shell",
+            "command": "docker exec -it avra_v3 colcon build --symlink-install",
+            "group": "build"
+        },
+        {
+            "label": "🧹 AVRA: Prune Docker Images",
+            "type": "shell",
+            "command": "docker system prune -af"
+        }
+    ]
+}

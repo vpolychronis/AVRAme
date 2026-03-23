@@ -4,11 +4,15 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+      args:
+        - USER_UID=1000
+        - USER_GID=1000
     container_name: avra_v3
     network_mode: host
     privileged: true
     environment:
       - DISPLAY=${DISPLAY}
+      - USER=ros
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - .:/home/ros/avra_ws
