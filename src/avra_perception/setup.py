@@ -27,6 +27,7 @@ setup(
             'camera_node = avra_perception.camera_node:main',
             'yolo_node = avra_perception.yolo_node:main',
 	    'dummy_yolo_front = avra_perception.yolo_node:main',
+        'pilot_node = avra_perception.pilot_node:main',
         ],
     },
 )

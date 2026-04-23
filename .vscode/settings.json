@@ -1,5 +1,4 @@
 {
-    // So that the editor actually sees the custom msgs etc we include
     "python.analysis.extraPaths": [
         "/opt/ros/humble/lib/python3.10/site-packages",
         "${workspaceFolder}/install/navigation/lib/python3.10/site-packages",
@@ -12,6 +11,21 @@
         "/opt/ros/humble/lib/python3.10/site-packages",
         "${workspaceFolder}/install/interfaces/lib/python3.10/site-packages",
         "${workspaceFolder}/install/control/lib/python3.10/site-packages"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "build/": true,
+        "install/": true,
+        "log/": true
+    },
+    "search.exclude": {
+        "build/": true,
+        "install/": true,
+        "log/": true
+    }
 }
-// Update to python3.12 for Jazzy
